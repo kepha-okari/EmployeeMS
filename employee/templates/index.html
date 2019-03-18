@@ -1,0 +1,85 @@
+
+
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="col-8" style="margin:auto">
+        {% if messages %}
+<!--            
+        <div class="messages alert">
+                <span class="success" style="color:green;font-size:15px;">The record has been deleted successfully</span>
+        </div>
+                -->
+        {% endif %}
+
+        {% if employees %}
+                    
+            <table class="table table-bordered">
+                    <thead>
+                    <tr style="font-size:15px;">
+                        <th>First Name</th>
+                        <th>Email</th>
+                        <th>phone</th>
+                        <th> <center>Action</center> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in employees %}
+                        <tr style="font-size:15px;">
+                            <td>{{ employee.first_name }}</td>
+                            <td>{{ employee.email }}</td>
+                            <td>{{ employee.department }}</td>
+                            <td>
+                                <span class="pull-right" style="margin-right:30%; font-size:15px;">
+                                    <a href="{% url 'edit_employee' employee.id %}">
+                                        <button type="button" class="btn btn-primary" style="font-size:15px;">Edit</button>
+                                    </a>                                        
+                                    <a href=" {% url 'remove_employee' employee.id%}">
+                                        <button type="button" class="btn btn-danger" style="font-size:15px;">Delete</button>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+                
+
+            <div class="col-md-6" style="float: right; font-size:15px;"">
+                    <span class="pull-right">
+                    
+                        {% if employees.has_other_pages %}
+                            <ul class="pagination">
+                            {% if employees.has_previous %}
+                                <li><a href="?page={{ employees.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                                <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in employees.paginator.page_range %}
+                                {% if employees.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if employees.has_next %}
+                                <li><a href="?page={{ employees.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                                <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                    
+                            </ul>
+                        {% endif %}
+                    </span>
+            </div>
+        {% else %}
+            <center>
+                <p style="font-size:25px; color:red">No employee records</p>
+            </center>
+        {% endif %}
+    </div>
+{% endblock %}
+

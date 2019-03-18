@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https:/<string:department>/use.fontawesome.com/80caa23151.js"></script>
+</head>
+<body> -->
+  <nav class="navbar navbar-default" style="margin-top:0px; width:100%;">
+    <div class="container-fluid">
+      <div class="navbar-header col-sm-12 col-md-4 ">
+       
+
+        <div class="" style="margin-top:15px;">
+          <h1>EmployeeMS</h1>
+        </div>
+
+      </div>
+
+
+
+        <div class="container">
+    
+            <div class="dropdown col-4" >
+                    <button type="button" name="department" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-size:15px; margin:auto;">
+                    Department
+                    </button>
+                    <div class="dropdown-menu" style="font-size:15px">
+                        <a class="dropdown-item" href="{% url 'filter_by_department'% }">HR</a>
+                        <a class="dropdown-item" href="#">Finance</a>
+                        <a class="dropdown-item" href="#">Operations</a>
+                        <a class="dropdown-item" href="#">Marketing</a>
+                        <a class="dropdown-item" href="#">R&D</a>
+            </div>
+
+            <div class="col-4" style="margin:auto">
+                <a href="{% url 'add_employee'%}">
+                    <button class="btn-primary">Add Employee</button>
+                </a>
+            </div>
+    
+            <div class="col-4 pull-right">
+                <form action="">
+                    <input type="file" name="csv_file" accept=".csv" style="float:left">
+            
+                    <input type="submit" value="Upload Image" name="submit" style="float:right">
+                </form>
+            </div>
+
+        </div>
+        
+
+
+
+
+          <div class="col-sm-12 col-md-4 menu" >
+
+            <div class="col-4">
+
+            </div>
+     
+
+
+    </nav>
